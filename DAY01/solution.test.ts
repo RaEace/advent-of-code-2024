@@ -7,7 +7,7 @@ import {
 
 Deno.test("it should parse correctly data inputs", () => {
   const string = "12345   04291";
-  assertEquals(parseInput(string), [["12345"], ["04291"]]);
+  assertEquals(parseInput(string), [["12345", "04291"]]);
 });
 
 // FIRST EXERCICE

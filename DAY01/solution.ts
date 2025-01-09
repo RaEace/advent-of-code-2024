@@ -1,7 +1,7 @@
 export function parseInput(str: string) {
   return str
     .trim()
-    .split("\n")
+    .split("\r\n")
     .map((line) => line.split("   "));
 }
 
