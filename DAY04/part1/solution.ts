@@ -10,13 +10,13 @@ import {
 } from "./util.ts";
 
 export function parseInput(str: string) {
-  return str.split("\r\n").map((e) => e.split(""));
+  return str.split(/\r?\n/).map((e) => e.split(""));
 }
 
 function analyseLettersAround(
   grid: string[][],
   columnID: number,
-  letterID: number,
+  letterID: number
 ): number {
   let count = 0;
 
