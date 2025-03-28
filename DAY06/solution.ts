@@ -5,6 +5,7 @@ import {
   getNextPosition,
   isObstacle,
   isOutOfMap,
+  removeDuplicatePositions,
 } from "./utils.ts";
 
 export function getPathStepsCount(grid: string[][]): number {
@@ -15,7 +16,7 @@ export function getPathStepsCount(grid: string[][]): number {
     const position = walkedPosition[walkedPosition.length - 1];
     const nextPosition = getNextPosition(position, direction);
 
-    if (isOutOfMap(nextPosition)) {
+    if (isOutOfMap(nextPosition, grid.length - 1)) {
       break;
     }
 
@@ -27,5 +28,5 @@ export function getPathStepsCount(grid: string[][]): number {
     }
   }
 
-  return [...new Set(walkedPosition)].length;
+  return removeDuplicatePositions(walkedPosition).length;
 }

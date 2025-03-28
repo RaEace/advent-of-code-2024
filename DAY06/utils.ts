@@ -55,9 +55,10 @@ export function getNextPosition(position: Position, direction: Direction) {
   return position;
 }
 
-export function isOutOfMap(position: Position) {
+export function isOutOfMap(position: Position, gridLength: number) {
   const { x, y } = position;
-  if (x === undefined || y === undefined) {
+
+  if (x > gridLength || y > gridLength) {
     return true;
   }
 
@@ -70,5 +71,12 @@ export function isObstacle(
 ): boolean {
   const { x, y } = position;
 
-  return grid[x][y] === "#";
+  return grid[y][x] === "#";
+}
+
+export function removeDuplicatePositions(positions: Position[]): Position[] {
+  return positions.filter(
+    (position, index, self) =>
+      index === self.findIndex((p) => p.x === position.x && p.y === position.y)
+  );
 }
